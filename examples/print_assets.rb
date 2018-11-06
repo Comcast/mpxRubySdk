@@ -11,12 +11,12 @@ service = 'Media Data Service'
 endpoint = 'MediaFile'
 return_fields = 'id,previousLocations,added'
 range = '1-10'
-start_seach_time = Time.now.to_i * 1000; # Current epoch time in milliseconds
+start_search_time = Time.now.to_i * 1000; # Current epoch time in milliseconds
 month_ms = 259_200_000 # 30 days in milliseconds
 user = Cts::Mpx::User.create(username: username, password: password).sign_in
 
 # Search everything in month preceding startSearchTime
-added_q_string = (start_seach_time - month_ms).to_s + "~" + start_seach_time.to_s
+added_q_string = (start_search_time - month_ms).to_s + "~" + start_search_time.to_s
 
 puts "searching for #{added_q_string}"
 
